@@ -12,9 +12,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
       return NextResponse.json({ error: "Not logged in" }, { status: 401 });
     const { name, description, privatePlaylist, movie } = await req.json();
     console.log(name, description, privatePlaylist, movie);
-    const playlistExist = await db.playlist.findUnique({
+    const playlistExist = await db.playlist.findFirst({
       where: {
         name,
+        ownerId: user.id,
       },
     });
     if (playlistExist) {

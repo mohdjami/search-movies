@@ -5,6 +5,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 async function GetAllPlaylists() {
   const user = await getCurrentUser();
+  if (!user)
+    return NextResponse.json({ error: "User not found" }, { status: 400 });
+
   const playlists = await db.playlist.findMany({
     where: { ownerId: user?.id },
     select: {

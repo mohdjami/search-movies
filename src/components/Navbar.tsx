@@ -22,20 +22,33 @@ const Navbar = async () => {
         </div>
         <header className="px-4 lg:px-6 h-14 flex items-center">
           <nav className="ml-auto flex gap-4 sm:gap-6">
-            <Link
-              href="/search"
-              className="text-sm font-medium hover:underline underline-offset-4 dark:text-slate-900"
-              prefetch={false}
-            >
-              Search Movies
-            </Link>
-            <Link
-              href="/dashboard"
-              className="text-sm font-medium hover:underline underline-offset-4 dark:text-slate-900"
-              prefetch={false}
-            >
-              Dashboard
-            </Link>
+            {session?.user ? (
+              <>
+                {" "}
+                <Link
+                  href="/search"
+                  className="text-sm font-medium hover:underline underline-offset-4 dark:text-slate-900"
+                  prefetch={false}
+                >
+                  Search Movies
+                </Link>
+                <Link
+                  href="/dashboard"
+                  className="text-sm font-medium hover:underline underline-offset-4 dark:text-slate-900"
+                  prefetch={false}
+                >
+                  Dashboard
+                </Link>
+              </>
+            ) : (
+              <Link
+                className={buttonVariants({ variant: "secondary" })}
+                href="/sign-in"
+              >
+                Get Started
+              </Link>
+            )}
+
             <Link
               href="/#features"
               className="text-sm font-medium hover:underline underline-offset-4 dark:text-slate-900"

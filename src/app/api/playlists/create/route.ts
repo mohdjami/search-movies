@@ -1,5 +1,6 @@
 import { db } from "@/lib/db";
 import { getCurrentUser } from "@/lib/session";
+import { handleError } from "@/lib/utils";
 import { privateEncrypt } from "crypto";
 import { User } from "lucide-react";
 import { NextRequest, NextResponse } from "next/server";
@@ -11,6 +12,18 @@ export async function POST(req: NextRequest, res: NextResponse) {
       return NextResponse.json({ error: "Not logged in" }, { status: 401 });
     const { name, description, privatePlaylist, movie } = await req.json();
     console.log(name, description, privatePlaylist, movie);
+    const playlistExist = await db.playlist.findUnique({
+      where: {
+        name,
+      },
+    });
+    if (playlistExist) {
+      return NextResponse.json(
+        { error: "Playlist already exist" },
+        { status: 400 }
+      );
+    }
+
     const playlist = await db.playlist.create({
       data: {
         name,
@@ -34,8 +47,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
     });
   } catch (error) {
     console.log(error);
-    return NextResponse.json({
-      error: "Something went wrong",
-    });
+    await handleError((error as Error).message);
   }
 }

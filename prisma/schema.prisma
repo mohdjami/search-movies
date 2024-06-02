@@ -64,7 +64,7 @@ model VerificationToken {
 
 model Movie {
   id    String  @id @default(uuid()) @map("_id")
-  title       String
+  title       String 
   type        String?  
   year        Int
   poster      String

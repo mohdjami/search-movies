@@ -12,6 +12,17 @@ export async function POST(req: NextRequest, res: NextResponse) {
       return NextResponse.json({ error: "Not logged in" }, { status: 401 });
     const { name, description, privatePlaylist } = await req.json();
     console.log(name, description, privatePlaylist);
+    const playlistExist = await db.playlist.findUnique({
+      where: {
+        name,
+      },
+    });
+    if (playlistExist) {
+      return NextResponse.json(
+        { error: "Playlist already exist" },
+        { status: 400 }
+      );
+    }
     const playlist = await db.playlist.create({
       data: {
         name,
@@ -44,7 +55,13 @@ export async function DELETE(req: NextRequest, res: NextResponse) {
     if (!user)
       return NextResponse.json({ error: "Not logged in" }, { status: 401 });
     // console.log(id);
-    const playlist = await db.playlist.delete({
+    await db.movie.deleteMany({
+      where: {
+        playlistId: id!,
+      },
+    });
+
+    await db.playlist.delete({
       where: {
         id: id!,
       },

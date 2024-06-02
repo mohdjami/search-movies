@@ -76,7 +76,7 @@ const PlaylistPage = async ({ params }: Props) => {
               updatedAt: Date;
               playlistId: string | null;
             }) => (
-              <Card className="grid p-5 space-y-5">
+              <Card className="grid p-5 space-y-5" key={movie.id}>
                 <CardTitle
                   key={movie.id}
                   className="flex text-lg py-3 truncate items-center justify-between"

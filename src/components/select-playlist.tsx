@@ -29,7 +29,7 @@ type SelectPlaylistProps = {
   movie: Movie;
 };
 type Playlist = {
-  _id: string;
+  id: string;
   name: string;
 };
 const FormSchema = z.object({
@@ -93,7 +93,7 @@ const SelectPlaylist: React.FC<SelectPlaylistProps> = ({ movie }) => {
                 <SelectContent>
                   {playlists.map((playlist: Playlist) => {
                     return (
-                      <SelectItem key={playlist._id} value={playlist.name}>
+                      <SelectItem key={playlist.id} value={playlist.name}>
                         {playlist.name}
                       </SelectItem>
                     );

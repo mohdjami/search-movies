@@ -74,6 +74,7 @@ const SignInForm = () => {
             "Please sign up if you are not a user or click on forgot password t reset your password",
           variant: "destructive",
         });
+        isLoading(false);
       } else {
         const response = await verifyEmail(values.email);
 

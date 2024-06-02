@@ -1,13 +1,15 @@
 import { db } from "@/lib/db";
+import { getCurrentUser } from "@/lib/session";
 import { handleError } from "@/lib/utils";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest, res: NextResponse) {
   try {
+    const user = await getCurrentUser();
     const { movie, playlist } = await req.json();
     //   console.log(movie, playlist);
-    const playList = await db.playlist.findUnique({
-      where: { name: playlist },
+    const playList = await db.playlist.findFirst({
+      where: { name: playlist, ownerId: user?.id },
     });
     const movieExist = await db.movie.findFirst({
       where: {

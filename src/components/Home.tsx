@@ -16,7 +16,7 @@ import SearchForm from "./form/SearchBar";
 export default function Home() {
   return (
     <>
-      <section className="space-y-8 pb-12 pt-4 md:space-y-16 md:pt-10 lg:py-32">
+      <section className="space-y-8 pb-12 h-screen pt-4 md:space-y-16 md:pt-10 lg:py-32">
         <h1 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem] text-center">
           Search Movies
         </h1>

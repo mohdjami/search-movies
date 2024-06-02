@@ -5,6 +5,7 @@ import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import UserAccountNav from "./UserAccountNav";
 import { ModeToggle } from "./mode-toggle";
+import Guide from "./guide-drawer";
 
 const Navbar = async () => {
   const session = await getServerSession(authOptions);
@@ -17,6 +18,7 @@ const Navbar = async () => {
             <Home className="dark:text-black h-10 w-10" />
           </Link>{" "}
           <ModeToggle />
+          <Guide />
         </div>
         <header className="px-4 lg:px-6 h-14 flex items-center">
           <nav className="ml-auto flex gap-4 sm:gap-6">
@@ -26,6 +28,13 @@ const Navbar = async () => {
               prefetch={false}
             >
               Search Movies
+            </Link>
+            <Link
+              href="/dashboard"
+              className="text-sm font-medium hover:underline underline-offset-4 dark:text-slate-900"
+              prefetch={false}
+            >
+              Dashboard
             </Link>
             <Link
               href="/#features"

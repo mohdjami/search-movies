@@ -61,7 +61,7 @@ export default function Hero() {
                 />
                 <h3 className="text-lg font-bold">The Avengers</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Marvel's superhero team-up movie.
+                  Marvel&apos;s superhero team-up movie.
                 </p>
               </div>
               <div className="grid gap-1">

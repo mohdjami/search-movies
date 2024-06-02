@@ -29,8 +29,7 @@ import { useEffect, useState } from "react";
 import { ArrowBigRight, Plus } from "lucide-react";
 import { Card, CardDescription, CardFooter, CardTitle } from "../ui/card";
 import Image from "next/image";
-import { PlaylistComboBox } from "../Combobox";
-import { SelectPlaylist } from "../select-playlist";
+
 import { Movie } from "@/types/config";
 import AddPlaylistDrawer from "../add-playlist-drawer";
 
@@ -136,11 +135,27 @@ const SearchForm = () => {
       </section>{" "}
       <section className="container m-10">
         {movies && !submit ? (
-          <div>
+          <div className="grid lg:grid-cols-6">
             {movies.map((movie: Movie) => (
-              <Card>
-                <CardTitle key={movie.imdbID}>{movie.Title}</CardTitle>
+              <Card className="p-4 m-2" key={movie.imdbID}>
+                <CardTitle
+                  key={movie.imdbID}
+                  className="flex text-lg py-3 truncate items-center justify-between"
+                  title={movie.Title}
+                >
+                  {movie.Title}
+                </CardTitle>
                 <CardDescription>{movie.Title}</CardDescription>
+                <CardDescription className="flex items-center justify-center p-4">
+                  {movie.Poster !== "N/A" ? (
+                    <Image
+                      src={movie.Poster}
+                      alt={movie.Title}
+                      width={50}
+                      height={50}
+                    />
+                  ) : null}
+                </CardDescription>
               </Card>
             ))}
           </div>
@@ -148,7 +163,7 @@ const SearchForm = () => {
         {submit ? (
           <div className="grid grid-cols-4 gap-5 m-10">
             {movies.map((movie: Movie) => (
-              <Card className="grid p-5 space-y-5">
+              <Card className="grid p-5 space-y-5" key={movie.imdbID}>
                 <CardTitle
                   key={movie.imdbID}
                   className="flex text-lg py-3 truncate items-center justify-between"

@@ -79,7 +79,7 @@ const SignInForm = () => {
         const response = await verifyEmail(values.email);
 
         if (response.status === 200) {
-          router.push("/admin");
+          router.push("/search");
           router.refresh();
           isLoading(false);
         } else {

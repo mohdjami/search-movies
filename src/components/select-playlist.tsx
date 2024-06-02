@@ -23,19 +23,49 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "@/components/ui/use-toast";
-
+import { useEffect, useState } from "react";
+import { Movie } from "@/types/config";
+type SelectPlaylistProps = {
+  movie: Movie;
+};
+type Playlist = {
+  _id: string;
+  name: string;
+};
 const FormSchema = z.object({
   playlist: z.string({
     required_error: "Please select an playlist to display.",
   }),
 });
 
-export function SelectPlaylist() {
+const SelectPlaylist: React.FC<SelectPlaylistProps> = ({ movie }) => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
-
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  const [playlists, setPlaylists] = useState([]);
+  useEffect(() => {
+    const fetchPlaylists = async () => {
+      const res = await fetch("/api/playlists/get-all", {
+        method: "GET",
+      });
+      const data = await res.json();
+      setPlaylists(data.playlists);
+      // console.log(data.playlists);
+    };
+    fetchPlaylists();
+  }, []);
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+    const res = await fetch("api/playlists/add-movie", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        movie,
+        playlist: data.playlist,
+      }),
+    });
+    console.log(res);
     toast({
       title: "You submitted the following values:",
       description: (
@@ -61,9 +91,13 @@ export function SelectPlaylist() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="m@example.com">m@example.com</SelectItem>
-                  <SelectItem value="m@google.com">m@google.com</SelectItem>
-                  <SelectItem value="m@support.com">m@support.com</SelectItem>
+                  {playlists.map((playlist: Playlist) => {
+                    return (
+                      <SelectItem key={playlist._id} value={playlist.name}>
+                        {playlist.name}
+                      </SelectItem>
+                    );
+                  })}
                 </SelectContent>
               </Select>
               {/* <FormDescription>
@@ -78,4 +112,6 @@ export function SelectPlaylist() {
       </form>
     </Form>
   );
-}
+};
+
+export default SelectPlaylist;

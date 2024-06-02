@@ -8,7 +8,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { SelectPlaylist } from "./select-playlist";
 import { useForm } from "react-hook-form";
 import { CreatePlaylist } from "@/lib/api";
 import * as z from "zod";
@@ -26,6 +25,7 @@ import { ArrowBigRight, Plus } from "lucide-react";
 import { Checkbox } from "./ui/checkbox";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Movie } from "@/types/config";
+import SelectPlaylist from "./select-playlist";
 type AddPlaylistDrawerProps = {
   movie: Movie;
 };
@@ -68,7 +68,7 @@ const AddPlaylistDrawer: React.FC<AddPlaylistDrawerProps> = ({ movie }) => {
           <DialogDescription className="py-2">
             Add to existing Playlist
           </DialogDescription>
-          <SelectPlaylist />
+          <SelectPlaylist movie={movie} />
         </DialogHeader>
         <hr />
         <div className="grid gap-4 py-4">

@@ -1,4 +1,6 @@
 import { Movie } from "@/types/config";
+import { db } from "./db";
+import { getCurrentUser } from "./session";
 
 export async function CreatePlaylist(
   name: string,

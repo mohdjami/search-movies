@@ -20,6 +20,11 @@ const Guide = () => {
         <DialogHeader>
           <DialogTitle>Guide</DialogTitle>
           <DialogDescription className="py-2">
+            First and foremost You need to signin before searching and start
+            creating Playlists. After successfully logging in you will se search
+            and dashboard route use them to search movies and create playlists.
+          </DialogDescription>
+          <DialogDescription className="py-2">
             While typing on the search bar you will see related suggestions on
             the movies. Write proper name and click on the side button to view
             proper cards of the images. Click on the <PlusIcon /> icon to add to

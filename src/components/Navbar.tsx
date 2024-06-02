@@ -42,8 +42,8 @@ const Navbar = async () => {
               </>
             ) : (
               <Link
-                className={buttonVariants({ variant: "secondary" })}
                 href="/sign-in"
+                className="text-sm font-medium hover:underline underline-offset-4 dark:text-slate-900"
               >
                 Get Started
               </Link>

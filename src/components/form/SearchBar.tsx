@@ -55,6 +55,7 @@ const SearchForm = () => {
       const res = await axios.get(
         `http://www.omdbapi.com/?s=${search}&apikey=69f8465b&page=${currentPage}`
       );
+      console.log(res);
       setMovies(res.data.Search);
       setTotalMovies(res.data.totalResults);
     };

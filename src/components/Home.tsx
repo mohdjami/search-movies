@@ -1,17 +1,5 @@
 import { FC, JSX, ReactNode, SVGProps, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import {
-  ArrowBigLeftIcon,
-  ArrowBigRightIcon,
-  CheckIcon,
-  XIcon,
-} from "lucide-react";
-import { Card } from "./ui/card";
-import { Arrow } from "@radix-ui/react-dropdown-menu";
-import SearchBar from "./form/SearchForm";
 import SearchForm from "./form/SearchBar";
 export default function Home() {
   return (

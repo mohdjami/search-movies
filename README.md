@@ -1,39 +1,28 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Project with Prisma and Supabase
 
-## Getting Started
+This project is a movie playlist application that allows users to sign in, search for movies, add them to a playlist, create new playlists, view their playlists on a dashboard, and share them publicly or privately.
 
-First, run the development server:
+## Setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+To set up a Next.js project with Prisma and Supabase, follow these steps:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Install dependencies by running `npm install`
+2. Generate Prisma Client by running `npx prisma generate` .
+3. Set up your Supabase account and get the URL and public anonymous key. Add these to your `.env.local` file as `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` respectively.
+4. Setup other env variables by changing into .env.example file.
+5. Run `npm run dev`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Authentication
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+We use NextAuth for authentication with Google, GitHub, and credentials providers.
 
-## Learn More
+For signing in with credentials, you need to first verify your email. An email will be sent to you for verification. After verifying, you can sign in again.
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Search Movies:** Users can search for movies to add to their playlists.
+- **Create Playlists:** Users can create new playlists and add movies to them.
+- **View Playlists:** Users can view their playlists on the dashboard.
+- **Share Playlists:** Users can share their playlists publicly or privately.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-=======
-# Nextjs-authentication
-SignIn and SignUp page with Nextjs , Prisma , Supabase, Next-auth and Shadcn library 
->>>>>>> cc65e89baa74eb05dc7bbfd53dbcc8b22c225313
+Enjoy the application!

@@ -95,6 +95,7 @@ const SearchBar = () => {
                   <Input
                     type="text"
                     placeholder="Enter your Search"
+                    className="border-2"
                     {...field}
                     onChange={(e) => {
                       setSearch(e.target.value);

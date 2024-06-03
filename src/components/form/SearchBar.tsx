@@ -157,6 +157,9 @@ const SearchForm = () => {
                     />
                   ) : null}
                 </CardDescription>
+                <CardFooter className="flex justify-between">
+                  {movie.Type} <AddPlaylistDrawer movie={movie} />
+                </CardFooter>
               </Card>
             ))}
           </div>

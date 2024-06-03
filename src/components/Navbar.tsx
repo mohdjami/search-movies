@@ -56,21 +56,6 @@ const Navbar = async () => {
             >
               Features
             </Link>
-
-            <Link
-              href="/#pricing"
-              className="text-sm font-medium hover:underline underline-offset-4 dark:text-slate-900"
-              prefetch={false}
-            >
-              Pricing
-            </Link>
-            <Link
-              href="/#about"
-              className="text-sm font-medium hover:underline underline-offset-4 dark:text-slate-900"
-              prefetch={false}
-            >
-              About
-            </Link>
             <Link
               href="#"
               className="text-sm font-medium hover:underline underline-offset-4 dark:text-slate-900"

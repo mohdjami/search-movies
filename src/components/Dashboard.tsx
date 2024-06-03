@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import CreatePlaylistNew from "./create-playlist-drawer";
+import CreatePlaylistNewDrawer from "./create-playlist-drawer";
 import { redirect } from "next/navigation";
 export type Movie = {
   title: string;
@@ -49,7 +49,7 @@ export default function Dashboard() {
     return <div className="m-32">Loading...</div>;
   }
   return (
-    <div className="flex flex-col h-full mt-20">
+    <div className="flex flex-col h-full m-32">
       <main className="flex-1">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-6">Playlists</h1>
@@ -106,7 +106,7 @@ export default function Dashboard() {
             })}
           </div>
           <div className="mt-8">
-            <CreatePlaylistNew />{" "}
+            <CreatePlaylistNewDrawer />
           </div>
         </div>
       </main>

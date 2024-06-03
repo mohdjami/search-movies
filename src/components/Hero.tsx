@@ -4,6 +4,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { JSX, SVGProps } from "react";
+import CreateNewPlaylistForm from "./create-new-playlist-form";
 
 export default function Hero() {
   return (
@@ -12,7 +13,7 @@ export default function Hero() {
         <section className="w-full pt-12 md:pt-24 lg:pt-32 border-y h-screen">
           <div className="px-4 md:px-6 space-y-10 xl:space-y-16">
             <div className="grid max-w-[1300px] mx-auto gap-4 px-4 sm:px-6 md:px-10 md:grid-rows-2 md:gap-16">
-              <div>
+              <div className="flex flex-col items-center justify-center">
                 <h1 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
                   Search Movies and Create Playlists
                 </h1>
@@ -160,58 +161,12 @@ export default function Hero() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto w-full max-w-sm space-y-2">
-              <form className="flex flex-col space-y-4">
-                <div className="space-y-1">
-                  <Label htmlFor="playlist-name">Playlist Name</Label>
-                  <Input
-                    id="playlist-name"
-                    type="text"
-                    placeholder="My Favorite Movies"
-                    className="max-w-lg flex-1 rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:border-gray-50 dark:focus:ring-gray-300"
-                  />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="playlist-description">Description</Label>
-                  <Textarea
-                    id="playlist-description"
-                    placeholder="A collection of my favorite movies"
-                    rows={3}
-                    className="max-w-lg flex-1 rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:border-gray-50 dark:focus:ring-gray-300"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
-                >
-                  Create Playlist
-                </Button>
-              </form>
+            <div className="flex flex-col items-center justify-center rounded-md mx-auto w-full max-w-sm space-y-2 border-2 p-10">
+              <CreateNewPlaylistForm />
             </div>
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-gray-500 dark:text-gray-400">
-          &copy; 2024 Movie Search App. All rights reserved.
-        </p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link
-            href="#"
-            className="text-xs hover:underline underline-offset-4"
-            prefetch={false}
-          >
-            Terms of Service
-          </Link>
-          <Link
-            href="#"
-            className="text-xs hover:underline underline-offset-4"
-            prefetch={false}
-          >
-            Privacy
-          </Link>
-        </nav>
-      </footer>
     </div>
   );
 }

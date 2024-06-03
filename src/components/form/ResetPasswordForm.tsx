@@ -83,7 +83,7 @@ const ResetPassword = () => {
         });
         router.push("/sign-in");
         toast({
-          title: "Password Upsated",
+          title: "Password Updated",
           description:
             "Password has been updated successfully, you can now login",
           variant: "default",

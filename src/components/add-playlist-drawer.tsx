@@ -26,6 +26,7 @@ import { Checkbox } from "./ui/checkbox";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Movie } from "@/types/config";
 import SelectPlaylist from "./select-playlist";
+import CreatePlaylistForm from "./create-playlist";
 type AddPlaylistDrawerProps = {
   movie: Movie;
 };
@@ -71,68 +72,7 @@ const AddPlaylistDrawer: React.FC<AddPlaylistDrawerProps> = ({ movie }) => {
           <SelectPlaylist movie={movie} />
         </DialogHeader>
         <hr />
-        <div className="grid gap-4 py-4">
-          <DialogTitle>Create a New One</DialogTitle>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="w-full flex flex-col gap-5 items-start"
-            >
-              <div className="grid grid-rows-4 gap-4 py-4 space-y-2 justify-start w-full">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          placeholder="Playlist Name"
-                          {...field}
-                          className="col-span-3 w-[340px]"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="description"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input placeholder="Description" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="privatePlaylist"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
-                      <FormControl>
-                        <Checkbox
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
-                        />
-                      </FormControl>
-                      <div className="space-y-1 leading-none">
-                        <FormLabel>
-                          I want this playlist to be Private
-                        </FormLabel>
-                      </div>
-                    </FormItem>
-                  )}
-                />
-                <DialogFooter>
-                  <Button type="submit">Save changes</Button>
-                </DialogFooter>
-              </div>
-            </form>
-          </Form>
-        </div>
+        <CreatePlaylistForm movie={movie} />
       </DialogContent>
     </Dialog>
   );

@@ -79,7 +79,7 @@ const SelectPlaylist: React.FC<SelectPlaylistProps> = ({ movie }) => {
         });
       } else {
         toast({
-          title: response.message,
+          title: response.error,
           variant: "destructive",
           description: (
             <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">

@@ -85,10 +85,10 @@ const SearchForm = () => {
     console.log("values of search", values);
     //Add Pagination also
     setSubmit(true);
-    console.log(submit);
+    // console.log(submit);
     try {
       movies.map((movie: Movie) => {
-        // console.log(movie.Title);
+        console.log(movie.Title);
       });
       toast({
         title: "Success",

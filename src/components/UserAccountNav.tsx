@@ -1,7 +1,7 @@
 "use client";
 import { signOut } from "next-auth/react";
 import { Button } from "./ui/button";
-import { Icons } from "@/components/Icons";
+import { Icons } from "@/components/icons";
 import { useState } from "react";
 
 const UserAccountNav = () => {

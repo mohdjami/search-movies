@@ -12,6 +12,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import CreatePlaylistNewDrawer from "./create-playlist-drawer";
 import { redirect } from "next/navigation";
+import { Icons } from "./icons";
 export type Movie = {
   title: string;
   year: string;
@@ -25,6 +26,7 @@ type Playlist = {
   name: string;
   description: string;
   ownerId: string;
+  visibility: boolean;
   movies: Movie[];
 };
 export default function Dashboard() {
@@ -49,7 +51,7 @@ export default function Dashboard() {
     return <div className="m-32">Loading...</div>;
   }
   return (
-    <div className="flex flex-col h-full m-32">
+    <div className="flex flex-col h-full ">
       <main className="flex-1">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-6">Playlists</h1>
@@ -63,6 +65,11 @@ export default function Dashboard() {
                   <CardHeader>
                     <CardTitle>{playlist.name}</CardTitle>
                     <CardDescription>{playlist.description}</CardDescription>
+                    <CardDescription>
+                      {playlist.visibility
+                        ? "Private Playlist"
+                        : "Public Playlist"}
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2">
@@ -92,7 +99,11 @@ export default function Dashboard() {
                           isDeleted(false);
                         }}
                       >
-                        {deleted ? "...." : "Delete"}
+                        {deleted ? (
+                          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                        ) : (
+                          "Delete"
+                        )}
                       </Button>{" "}
                       <Link
                         href={`/dashboard/${playlist.id}`}

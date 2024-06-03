@@ -13,6 +13,7 @@ import { getCurrentUser } from "@/lib/session";
 import { redirect } from "next/navigation";
 import AddPlaylistDrawer from "@/components/add-playlist-drawer";
 import Image from "next/image";
+import { ImageFrame } from "@/components/image-frame";
 type Props = {
   params: { id: string };
 };
@@ -38,7 +39,6 @@ const PlaylistPage = async ({ params }: Props) => {
     select: {
       id: true,
       name: true,
-
       movies: true,
       ownerId: true,
       description: true,
@@ -49,34 +49,34 @@ const PlaylistPage = async ({ params }: Props) => {
   // This will not be logged on the server when using static rendering
   console.log(id);
   const user = await getCurrentUser();
-  if (!user) {
-    return redirect("/sign-in");
-  }
-  if (playlist?.visibility === true) {
+  if (user && playlist?.visibility) {
     if (user.id !== playlist.ownerId) {
       return redirect("/dashboard");
     }
   }
   return (
-    <main className="mt-32">
-      <CardHeader className="p-10 " key={playlist?.id}>
+    <main>
+      <CardHeader className="" key={playlist?.id}>
         <CardTitle>{playlist?.name}</CardTitle>
         <CardDescription>{playlist?.description}</CardDescription>
+        <CardDescription>
+          {playlist?.visibility ? "Private Playlist" : "Public Playlist"}
+        </CardDescription>
       </CardHeader>
       {movies ? (
-        <div className="grid grid-cols-4 gap-5 m-10">
+        <div className="grid grid-cols-4 gap-5">
           {movies.map(
             (movie: {
               id: string;
               title: string;
               type: string | null;
-              year: number;
-              poster: string;
+              year: number | null;
+              poster: string | null;
               createdAt: Date;
               updatedAt: Date;
               playlistId: string | null;
             }) => (
-              <Card className="grid p-5 space-y-5" key={movie.id}>
+              <Card className="grid p-5" key={movie.id}>
                 <CardTitle
                   key={movie.id}
                   className="flex text-lg py-3 truncate items-center justify-between"
@@ -85,15 +85,17 @@ const PlaylistPage = async ({ params }: Props) => {
                   {movie.title}{" "}
                 </CardTitle>
                 <CardDescription className="py-2">{movie.year}</CardDescription>
-                <CardDescription className="flex items-center justify-center p-4">
-                  {movie.poster !== "N/A" ? (
-                    <Image
-                      src={movie.poster}
-                      alt={movie.title}
-                      width={200}
-                      height={200}
-                    />
-                  ) : null}
+                <CardDescription className="flex items-center justify-center py-2">
+                  <ImageFrame>
+                    {movie.poster !== "N/A" ? (
+                      <Image
+                        src={movie.poster || "/"}
+                        alt={movie.title}
+                        width={100}
+                        height={100}
+                      />
+                    ) : null}
+                  </ImageFrame>
                 </CardDescription>
                 <CardFooter className="flex justify-between">
                   {movie.type}

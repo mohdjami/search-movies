@@ -40,6 +40,7 @@ const FormSchema = z.object({
 });
 
 const SelectPlaylist: React.FC<SelectPlaylistProps> = ({ movie }) => {
+  const [loading, isLoading] = useState(false);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
@@ -57,6 +58,7 @@ const SelectPlaylist: React.FC<SelectPlaylistProps> = ({ movie }) => {
   }, []);
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     try {
+      isLoading(true);
       const res = await fetch("api/playlists/add-movie", {
         method: "POST",
         headers: {
@@ -77,7 +79,9 @@ const SelectPlaylist: React.FC<SelectPlaylistProps> = ({ movie }) => {
             </pre>
           ),
         });
+        isLoading(false);
       } else {
+        isLoading(false);
         toast({
           title: response.error,
           variant: "destructive",
@@ -88,10 +92,12 @@ const SelectPlaylist: React.FC<SelectPlaylistProps> = ({ movie }) => {
           ),
         });
       }
+      isLoading(false);
     } catch (error) {
       console.log(error);
+      isLoading(false);
       toast({
-        title: "You submitted the following values:",
+        title: "Error Submitting",
         variant: "destructive",
         description: (
           <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">

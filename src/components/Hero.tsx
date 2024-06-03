@@ -5,6 +5,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { JSX, SVGProps } from "react";
 import CreateNewPlaylistForm from "./create-new-playlist-form";
+import Image from "next/image";
+import { ImageFrame } from "./image-frame";
 
 export default function Hero() {
   return (
@@ -53,39 +55,45 @@ export default function Hero() {
             </div>
             <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
               <div className="grid gap-1">
-                <img
-                  src="/placeholder.svg"
-                  width="550"
-                  height="310"
-                  alt="Movie Poster"
-                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                />
+                <ImageFrame>
+                  <Image
+                    src="https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"
+                    width="550"
+                    height="310"
+                    alt="Movie Poster"
+                    className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                  />
+                </ImageFrame>
                 <h3 className="text-lg font-bold">The Avengers</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                   Marvel&apos;s superhero team-up movie.
                 </p>
               </div>
               <div className="grid gap-1">
-                <img
-                  src="/placeholder.svg"
-                  width="550"
-                  height="310"
-                  alt="Movie Poster"
-                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                />
+                <ImageFrame>
+                  <Image
+                    src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg"
+                    width="550"
+                    height="310"
+                    alt="Movie Poster"
+                    className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                  />
+                </ImageFrame>
                 <h3 className="text-lg font-bold">Inception</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                   A mind-bending sci-fi thriller.
                 </p>
               </div>
               <div className="grid gap-1">
-                <img
-                  src="/placeholder.svg"
-                  width="550"
-                  height="310"
-                  alt="Movie Poster"
-                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                />
+                <ImageFrame>
+                  <Image
+                    src="https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg"
+                    width="550"
+                    height="310"
+                    alt="Movie Poster"
+                    className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                  />
+                </ImageFrame>
                 <h3 className="text-lg font-bold">The Dark Knight</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                   The epic conclusion to the Batman trilogy.

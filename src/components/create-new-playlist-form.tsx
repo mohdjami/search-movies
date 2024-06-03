@@ -30,6 +30,7 @@ import SelectPlaylist from "./select-playlist";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "@/components/ui/use-toast";
+import { Icons } from "./icons";
 
 const Schema = z.object({
   name: z.string().min(1, "name is required"),
@@ -67,6 +68,10 @@ const CreateNewPlaylistForm = () => {
       });
       const res = await response.json();
       if (response.ok) {
+        toast({
+          title: "Playlist is created",
+          variant: "default",
+        });
         window.location.reload();
         isLoading(false);
       } else {
@@ -138,7 +143,6 @@ const CreateNewPlaylistForm = () => {
                     <Checkbox
                       checked={field.value}
                       onCheckedChange={field.onChange}
-                      className="max-w-lg flex-1 rounded-md border border-gray-800 bg-white px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus:border-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:border-gray-50 dark:focus:ring-gray-300"
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
@@ -147,8 +151,11 @@ const CreateNewPlaylistForm = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full">
-              {loading ? "Loading..." : "Create"}
+            <Button type="submit" className="w-full flex">
+              {loading ? (
+                <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+              ) : null}
+              Save
             </Button>
           </div>
         </form>

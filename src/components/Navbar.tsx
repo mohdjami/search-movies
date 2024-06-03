@@ -6,6 +6,7 @@ import { getServerSession } from "next-auth";
 import UserAccountNav from "./UserAccountNav";
 import { ModeToggle } from "./mode-toggle";
 import Guide from "./guide-drawer";
+import { navLinks } from "@/config/links";
 
 const Navbar = async () => {
   const session = await getServerSession(authOptions);
@@ -49,20 +50,15 @@ const Navbar = async () => {
               </Link>
             )}
 
-            <Link
-              href="/#features"
-              className="text-sm font-medium hover:underline underline-offset-4 dark:text-slate-900"
-              prefetch={false}
-            >
-              Features
-            </Link>
-            <Link
-              href="#"
-              className="text-sm font-medium hover:underline underline-offset-4 dark:text-slate-900"
-              prefetch={false}
-            >
-              Contact
-            </Link>
+            {navLinks.data.map((item, index) => (
+              <Link
+                key={index}
+                href={item.disabled ? "/" : item.href || "/"}
+                className="text-sm font-medium hover:underline underline-offset-4 dark:text-slate-900"
+              >
+                {item.title}
+              </Link>
+            ))}
           </nav>
         </header>
         {session?.user ? (

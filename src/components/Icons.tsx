@@ -8,7 +8,6 @@ import {
 } from "react-icons/ai";
 import { BiCalendar, BiHistory } from "react-icons/bi";
 import {
-  BsActivity,
   BsCheck2,
   BsChevronDown,
   BsChevronLeft,
@@ -37,7 +36,6 @@ const icons = {
 
   // Dashboard Icons
   dashboard: RxDashboard,
-  activity: BsActivity,
   settings: LuSettings,
 
   // Mode Toggle

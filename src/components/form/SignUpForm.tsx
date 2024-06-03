@@ -20,6 +20,7 @@ import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import GithubSignInButton from "../GithubSignInButton";
 import { useState } from "react";
+import { Icons } from "../icons";
 
 const FormSchema = z
   .object({
@@ -166,14 +167,21 @@ const SignUpForm = () => {
             type="submit"
             variant="outline"
           >
-            {loading ? "Loading..." : "Sign up"}
+            {loading ? (
+              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+            ) : null}{" "}
+            Sign up
           </Button>
+
           <Button
             className="w-full mt-4 md:mt-8 lg:mt-10 block lg:hidden"
             type="submit"
             variant="outline"
           >
-            {loading ? "Loading..." : "Sign up"}
+            {loading ? (
+              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+            ) : null}{" "}
+            Sign up
           </Button>
         </div>
       </form>

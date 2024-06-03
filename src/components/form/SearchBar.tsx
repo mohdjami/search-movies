@@ -32,6 +32,7 @@ import Image from "next/image";
 
 import { Movie } from "@/types/config";
 import AddPlaylistDrawer from "../add-playlist-drawer";
+import { ImageFrame } from "../image-frame";
 
 type FormValues = {
   search: string;
@@ -65,7 +66,6 @@ const SearchForm = () => {
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
-    // Here you would also fetch the data for the new page
   };
   const paginationItems = [];
   for (let i = currentPage; i <= totalPages + currentPage; i++) {
@@ -148,14 +148,16 @@ const SearchForm = () => {
                 </CardTitle>
                 <CardDescription>{movie.Title}</CardDescription>
                 <CardDescription className="flex items-center justify-center p-4">
-                  {movie.Poster !== "N/A" ? (
-                    <Image
-                      src={movie.Poster}
-                      alt={movie.Title}
-                      width={50}
-                      height={50}
-                    />
-                  ) : null}
+                  <ImageFrame>
+                    {movie.Poster !== "N/A" ? (
+                      <Image
+                        src={movie.Poster}
+                        alt={movie.Title}
+                        width={50}
+                        height={50}
+                      />
+                    ) : null}
+                  </ImageFrame>
                 </CardDescription>
                 <CardFooter className="flex justify-between">
                   {movie.Type} <AddPlaylistDrawer movie={movie} />

@@ -25,6 +25,7 @@ import {
 import { toast } from "@/components/ui/use-toast";
 import { useEffect, useState } from "react";
 import { Movie } from "@/types/config";
+import { Console } from "console";
 type SelectPlaylistProps = {
   movie: Movie;
 };
@@ -55,25 +56,50 @@ const SelectPlaylist: React.FC<SelectPlaylistProps> = ({ movie }) => {
     fetchPlaylists();
   }, []);
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    const res = await fetch("api/playlists/add-movie", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        movie,
-        playlist: data.playlist,
-      }),
-    });
-    console.log(res);
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+    try {
+      const res = await fetch("api/playlists/add-movie", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          movie,
+          playlist: data.playlist,
+        }),
+      });
+      const response = await res.json();
+      if (res.ok) {
+        toast({
+          title: "You submitted the following values:",
+          description: (
+            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+              <code className="text-white">{data.playlist}</code>
+            </pre>
+          ),
+        });
+      } else {
+        toast({
+          title: response.message,
+          variant: "destructive",
+          description: (
+            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+              <code className="text-white">{data.playlist}</code>
+            </pre>
+          ),
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: "You submitted the following values:",
+        variant: "destructive",
+        description: (
+          <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+            <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+          </pre>
+        ),
+      });
+    }
   }
 
   return (

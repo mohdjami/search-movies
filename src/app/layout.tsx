@@ -5,6 +5,7 @@ import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "../components/theme-provider";
+import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -22,9 +23,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <Provider>
-            <main className="flex flex-col justify-center items-center">
+            <main className="justify-center items-center">
               <Navbar />
-              {children}
+              <div>{children}</div>
+
+              <Footer />
             </main>
             <Toaster />
           </Provider>

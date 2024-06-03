@@ -29,6 +29,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { toast } from "@/components/ui/use-toast";
+import { useState } from "react";
 
 const languages = [
   { label: "English", value: "en" },
@@ -49,6 +50,7 @@ const FormSchema = z.object({
 });
 
 export function PlaylistComboBox() {
+  const [loading, isLoading] = useState(false);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });

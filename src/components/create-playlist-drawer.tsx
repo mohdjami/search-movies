@@ -28,6 +28,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Movie } from "@/types/config";
 import SelectPlaylist from "./select-playlist";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "@/components/ui/use-toast";
 
 const Schema = z.object({
   name: z.string().min(1, "name is required"),
@@ -35,6 +37,7 @@ const Schema = z.object({
   privatePlaylist: z.boolean().default(false).optional(),
 });
 const CreatePlaylistNew = () => {
+  const [loading, isLoading] = useState(false);
   const router = useRouter();
   const form = useForm<z.infer<typeof Schema>>({
     resolver: zodResolver(Schema),
@@ -46,22 +49,42 @@ const CreatePlaylistNew = () => {
   });
 
   const onSubmit = async (data: z.infer<typeof Schema>) => {
-    const { name, description, privatePlaylist } = data;
-    console.log(name, description, privatePlaylist);
+    try {
+      isLoading(true);
+      const { name, description, privatePlaylist } = data;
+      console.log(name, description, privatePlaylist);
 
-    const response = await fetch("api/playlists/create-playlist", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        description,
-        privatePlaylist,
-      }),
-    });
-    if (response.ok) {
-      window.location.reload();
+      const response = await fetch("api/playlists/create-playlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          description,
+          privatePlaylist,
+        }),
+      });
+      const res = await response.json();
+      if (response.ok) {
+        window.location.reload();
+        isLoading(false);
+      } else {
+        toast({
+          title: res.message,
+          variant: "destructive",
+        });
+        isLoading(false);
+      }
+      isLoading(false);
+    } catch (error) {
+      isLoading(false);
+
+      console.log(error);
+      toast({
+        title: "Error",
+        variant: "destructive",
+      });
     }
   };
 
@@ -133,7 +156,9 @@ const CreatePlaylistNew = () => {
                   )}
                 />
                 <DialogFooter>
-                  <Button type="submit">Create</Button>
+                  <Button type="submit">
+                    {loading ? "Loading..." : "Create"}
+                  </Button>
                 </DialogFooter>
               </div>
             </form>

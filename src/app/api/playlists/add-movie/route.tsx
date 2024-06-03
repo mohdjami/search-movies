@@ -17,8 +17,16 @@ export async function POST(req: NextRequest, res: NextResponse) {
         playlistId: playList?.id,
       },
     });
+    console.log(movieExist);
     if (movieExist) {
-      await handleError("Movie already Exists");
+      return NextResponse.json(
+        {
+          message: "Movie already exist in this playlist",
+        },
+        {
+          status: 409,
+        }
+      );
     }
     const addMovie = await db.movie.create({
       data: {

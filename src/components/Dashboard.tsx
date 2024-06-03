@@ -29,17 +29,25 @@ type Playlist = {
 };
 export default function Dashboard() {
   const [playlists, setPlaylists] = useState([]);
+  const [deleted, isDeleted] = useState(false);
+  const [loading, isLoading] = useState(false);
   useEffect(() => {
     const fetchPlaylists = async () => {
+      isLoading(true);
       const res = await fetch("/api/playlists/get-all", {
         method: "GET",
       });
       const data = await res.json();
       setPlaylists(data.playlists);
       console.log(data.playlists);
+      isLoading(false);
     };
     fetchPlaylists();
   }, []);
+
+  if (loading) {
+    return <div className="m-32">Loading...</div>;
+  }
   return (
     <div className="flex flex-col h-full mt-20">
       <main className="flex-1">
@@ -69,6 +77,7 @@ export default function Dashboard() {
                       <Button
                         variant="destructive"
                         onClick={async () => {
+                          isDeleted(true);
                           const res = await fetch(
                             `/api/playlists/create-playlist/?id=${playlist.id}`,
                             {
@@ -76,14 +85,16 @@ export default function Dashboard() {
                             }
                           );
                           if (res.ok) {
+                            isDeleted(false);
                             window.location.reload();
                           }
+                          isDeleted(false);
                         }}
                       >
-                        Delete
+                        {deleted ? "...." : "Delete"}
                       </Button>{" "}
                       <Link
-                        href={`/dashboard/?id=${playlist.id}`}
+                        href={`/dashboard/${playlist.id}`}
                         className={buttonVariants()}
                       >
                         View

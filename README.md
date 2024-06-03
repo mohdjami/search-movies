@@ -25,4 +25,8 @@ For signing in with credentials, you need to first verify your email. An email w
 - **View Playlists:** Users can view their playlists on the dashboard.
 - **Share Playlists:** Users can share their playlists publicly or privately.
 
+## Here is the demo of the APP
+
+[![Demo Video](public/image.png)](public/demo-video.mp4 "Demo Video")
+
 Enjoy the application!

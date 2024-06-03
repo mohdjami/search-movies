@@ -51,16 +51,19 @@ export default function Dashboard() {
     return <div className="m-32">Loading...</div>;
   }
   return (
-    <div className="flex flex-col h-full ">
+    <div className="flex h-full ">
       <main className="flex-1">
+        <div className="flex items-center justify-between">
+          <h1 className="text-3xl font-bold mb-6">Playlists</h1>{" "}
+          <CreatePlaylistNewDrawer />
+        </div>
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl font-bold mb-6">Playlists</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {playlists.map((playlist: Playlist) => {
               return (
                 <Card
                   key={playlist.id}
-                  className="flex flex-col flex-grow gap-5"
+                  className="flex flex-col flex-grow gap-5 justify-between"
                 >
                   <CardHeader>
                     <CardTitle>{playlist.name}</CardTitle>
@@ -73,10 +76,20 @@ export default function Dashboard() {
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2">
-                      {playlist.movies.map((movie: Movie) => {
-                        console.log(movie);
-                        return <li key={movie.imdbID}>{movie.title}</li>;
-                      })}
+                      {playlist.movies.length !== 0 ? (
+                        playlist.movies.slice(0, 3).map((movie: Movie) => {
+                          console.log(movie);
+                          return <li key={movie.imdbID}>{movie.title}</li>;
+                        })
+                      ) : (
+                        <li>
+                          <Link href="/search" className=" underline">
+                            {" "}
+                            Click here to add movies
+                          </Link>
+                        </li>
+                      )}
+                      <li>...</li>
                     </ul>
                   </CardContent>
                   <CardFooter>
@@ -116,9 +129,6 @@ export default function Dashboard() {
                 </Card>
               );
             })}
-          </div>
-          <div className="m-8">
-            <CreatePlaylistNewDrawer />
           </div>
         </div>
       </main>

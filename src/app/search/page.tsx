@@ -10,7 +10,7 @@ const HomePage = async () => {
     redirect("/sign-in");
   }
   return (
-    <section className="container min-h-screen">
+    <section className="container min-h-screen ">
       <Home />
     </section>
   );

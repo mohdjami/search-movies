@@ -64,7 +64,7 @@ const PlaylistPage = async ({ params }: Props) => {
         </CardDescription>
       </CardHeader>
       {movies ? (
-        <div className="grid grid-cols-4 gap-5">
+        <div className="grid lg:grid-cols-4 gap-5">
           {movies.map(
             (movie: {
               id: string;

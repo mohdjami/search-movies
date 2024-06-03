@@ -53,8 +53,10 @@ export default function Dashboard() {
   return (
     <div className="flex h-full ">
       <main className="flex-1">
-        <div className="flex items-center justify-between">
-          <h1 className="text-3xl font-bold mb-6">Playlists</h1>{" "}
+        <div className="lg:flex grid  items-center justify-between m-10">
+          <h1 className="text-3xl font-bold mb-6 flex items-center">
+            Playlists
+          </h1>{" "}
           <CreatePlaylistNewDrawer />
         </div>
         <div className="max-w-4xl mx-auto">
@@ -93,7 +95,7 @@ export default function Dashboard() {
                     </ul>
                   </CardContent>
                   <CardFooter>
-                    <div className="flex justify-end space-x-2">
+                    <div className="flex justify-center space-x-2">
                       <Button variant="outline">Edit</Button>
                       <Button
                         variant="destructive"
@@ -120,7 +122,7 @@ export default function Dashboard() {
                       </Button>{" "}
                       <Link
                         href={`/dashboard/${playlist.id}`}
-                        className={buttonVariants()}
+                        className={buttonVariants({ variant: "default" })}
                       >
                         View
                       </Link>

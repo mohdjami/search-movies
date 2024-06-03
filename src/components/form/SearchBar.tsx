@@ -120,7 +120,7 @@ const SearchForm = () => {
                           setSearch(e.target.value);
                           form.setValue("search", e.target.value);
                         }}
-                        className="w-[600px] "
+                        className="lg:w-[600px] w-auto "
                       />
                     </FormControl>
                     <FormMessage />

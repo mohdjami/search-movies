@@ -21,6 +21,6 @@ export async function CreatePlaylist(
     }),
   });
 
-  console.log(response);
+  // console.log(response);
   return response;
 }

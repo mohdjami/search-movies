@@ -1,5 +1,4 @@
-import { FC, JSX, ReactNode, SVGProps, useState } from "react";
-import Link from "next/link";
+import { FC, JSX, ReactNode, SVGProps } from "react";
 import SearchForm from "./form/SearchBar";
 export default function Home() {
   return (

@@ -20,7 +20,7 @@ import { useToast } from "@/components/ui/use-toast";
 import axios from "axios";
 import GithubSignInButton from "../GithubSignInButton";
 import { useState } from "react";
-import { Icons } from "../icons";
+import { Icons } from "../Icons";
 
 const FormSchema = z.object({
   email: z.string().min(1, "Email is required").email("Invalid email"),

@@ -12,7 +12,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import CreatePlaylistNewDrawer from "./create-playlist-drawer";
 import { redirect } from "next/navigation";
-import { Icons } from "./icons";
+import { Icons } from "./Icons";
 export type Movie = {
   title: string;
   year: string;

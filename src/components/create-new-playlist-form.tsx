@@ -30,7 +30,7 @@ import SelectPlaylist from "./select-playlist";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "@/components/ui/use-toast";
-import { Icons } from "./icons";
+import { Icons } from "./Icons";
 
 const Schema = z.object({
   name: z.string().min(1, "name is required"),

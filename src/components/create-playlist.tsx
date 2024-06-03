@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -26,6 +27,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Movie } from "@/types/config";
 import SelectPlaylist from "./select-playlist";
 import { CreatePlaylist } from "@/lib/api";
+import { useState } from "react";
+import { Icon } from "@radix-ui/react-select";
+import { Icons } from "./Icons";
+import { toast } from "./ui/use-toast";
 
 type CreatePlaylistProps = {
   movie: Movie;
@@ -36,6 +41,7 @@ const Schema = z.object({
   privatePlaylist: z.boolean().default(false).optional(),
 });
 const CreatePlaylistForm: React.FC<CreatePlaylistProps> = ({ movie }) => {
+  const [loading, isLoading] = useState(false);
   const form = useForm<z.infer<typeof Schema>>({
     resolver: zodResolver(Schema),
     defaultValues: {
@@ -46,14 +52,31 @@ const CreatePlaylistForm: React.FC<CreatePlaylistProps> = ({ movie }) => {
   });
 
   const onSubmit = async (data: z.infer<typeof Schema>) => {
+    isLoading(true);
     const { name, description, privatePlaylist } = data;
-    const playlist = await CreatePlaylist(
+    const response = await CreatePlaylist(
       name,
       description,
       privatePlaylist,
       movie
     );
+    const res = await response.json();
     console.log(name, description, privatePlaylist);
+    if (res.ok) {
+      isLoading(false);
+      toast({
+        title: "Playlist Created",
+        description: name,
+      });
+    } else {
+      isLoading(false);
+      toast({
+        title: "Playlist Created",
+        variant: "destructive",
+        description: name,
+      });
+    }
+    isLoading(false);
   };
   return (
     <div className="grid gap-4 py-4">
@@ -114,7 +137,12 @@ const CreatePlaylistForm: React.FC<CreatePlaylistProps> = ({ movie }) => {
               )}
             />
             <DialogFooter>
-              <Button type="submit">Save changes</Button>
+              <Button type="submit" className="flex">
+                {loading ? (
+                  <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                ) : null}
+                Save changes
+              </Button>
             </DialogFooter>
           </div>
         </form>

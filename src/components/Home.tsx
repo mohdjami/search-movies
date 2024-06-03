@@ -8,6 +8,12 @@ export default function Home() {
         <h1 className="lg:leading-tighter text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem] text-center">
           Search Movies
         </h1>
+        <div className="flex flex-col items-center">
+          <h6>
+            Press the search button when you are done typing to view proper
+            results
+          </h6>
+        </div>
         <SearchForm />
       </section>
     </>

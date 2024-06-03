@@ -135,6 +135,11 @@ const SearchForm = () => {
         </Form>
       </section>{" "}
       <section className="container m-10">
+        {!movies && !submit ? (
+          <div className="flex flex-col items-center justify-center">
+            <h1>Start Searching...</h1>
+          </div>
+        ) : null}
         {movies && !submit ? (
           <div className="grid lg:grid-cols-6">
             {movies.map((movie: Movie) => (

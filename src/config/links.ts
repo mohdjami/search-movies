@@ -8,12 +8,8 @@ export const navLinks: Navigation = {
     },
 
     {
-      title: "Features",
+      title: "Featured",
       href: "/#features",
-    },
-    {
-      title: "Contact",
-      href: "/#contact",
     },
   ],
 };

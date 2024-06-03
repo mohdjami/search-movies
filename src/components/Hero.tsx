@@ -26,12 +26,9 @@ export default function Hero() {
                   with your friends.
                 </p>
                 <div className="flex items-center justify-center space-x-4">
-                  <Button
-                    type="submit"
-                    className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
-                  >
+                  <Link href="/#top-playlists" className={buttonVariants()}>
                     Getting Started
-                  </Button>
+                  </Link>
                   <Link href="/sign-up" className={buttonVariants()}>
                     Sign Up
                   </Link>
@@ -102,7 +99,10 @@ export default function Hero() {
             </div>
           </div>
         </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
+        <section
+          className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800"
+          id="top-playlists"
+        >
           <div className="container space-y-12 px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -114,46 +114,64 @@ export default function Hero() {
                 </p>
               </div>
             </div>
+
             <div className="mx-auto grid items-start gap-8 sm:max-w-4xl sm:grid-cols-2 md:gap-12 lg:max-w-5xl lg:grid-cols-3">
-              <div className="grid gap-1">
-                <img
-                  src="/placeholder.svg"
-                  width="550"
-                  height="310"
-                  alt="Playlist Cover"
-                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                />
-                <h3 className="text-lg font-bold">Action Movie Playlist</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  A collection of the best action movies.
-                </p>
-              </div>
-              <div className="grid gap-1">
-                <img
-                  src="/placeholder.svg"
-                  width="550"
-                  height="310"
-                  alt="Playlist Cover"
-                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                />
-                <h3 className="text-lg font-bold">Romantic Comedy Playlist</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Laugh and fall in love with these romantic comedies.
-                </p>
-              </div>
-              <div className="grid gap-1">
-                <img
-                  src="/placeholder.svg"
-                  width="550"
-                  height="310"
-                  alt="Playlist Cover"
-                  className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                />
-                <h3 className="text-lg font-bold">Sci-Fi Essentials</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  The must-watch sci-fi movies of all time.
-                </p>
-              </div>
+              <Link
+                href="https://search-movies-tawny.vercel.app/dashboard/f4e5dd94-3042-4456-98b1-b777f7553fe0"
+                className="hover:underline"
+              >
+                <div className="grid gap-1">
+                  <Image
+                    src="https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
+                    width="550"
+                    height="310"
+                    alt="Playlist Cover"
+                    className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                  />
+                  <h3 className="text-lg font-bold">Action Movie Playlist</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    A collection of the best action movies.
+                  </p>
+                </div>
+              </Link>
+              <Link
+                href="https://search-movies-tawny.vercel.app/dashboard/dcd2e0c9-7257-4a1d-b544-9a1e8d8f3afe"
+                className="hover:underline"
+              >
+                <div className="grid gap-1">
+                  <img
+                    src="https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_SX300.jpg"
+                    width="550"
+                    height="310"
+                    alt="Playlist Cover"
+                    className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                  />
+                  <h3 className="text-lg font-bold">
+                    Romantic Comedy Playlist
+                  </h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Laugh and fall in love with these romantic comedies.
+                  </p>
+                </div>
+              </Link>
+              <Link
+                href="https://search-movies-tawny.vercel.app/dashboard/44ef9964-2923-4253-8404-5ce64a2421a2"
+                className="hover:underline"
+              >
+                <div className="grid gap-1">
+                  <Image
+                    src="https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"
+                    width="550"
+                    height="310"
+                    alt="Playlist Cover"
+                    className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                  />
+                  <h3 className="text-lg font-bold">Sci-Fi Essentials</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    The must-watch sci-fi movies of all time.
+                  </p>
+                </div>
+              </Link>
             </div>
           </div>
         </section>

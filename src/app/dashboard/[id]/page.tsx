@@ -45,6 +45,11 @@ const PlaylistPage = async ({ params }: Props) => {
       visibility: true,
     },
   });
+  const owner = await db.user.findUnique({
+    where: {
+      id: playlist?.ownerId,
+    },
+  });
   const movies = playlist?.movies;
   // This will not be logged on the server when using static rendering
   console.log(id);
@@ -57,7 +62,8 @@ const PlaylistPage = async ({ params }: Props) => {
   return (
     <main>
       <CardHeader className="" key={playlist?.id}>
-        <CardTitle>{playlist?.name}</CardTitle>
+        <CardTitle>Playlist Name: {playlist?.name}</CardTitle>
+        <CardTitle>Owner: {owner?.name}</CardTitle>
         <CardDescription>{playlist?.description}</CardDescription>
         <CardDescription>
           {playlist?.visibility ? "Private Playlist" : "Public Playlist"}

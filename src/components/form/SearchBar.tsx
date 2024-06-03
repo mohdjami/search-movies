@@ -140,7 +140,7 @@ const SearchForm = () => {
             <h1>Start Searching...</h1>
           </div>
         ) : null}
-        {movies && !submit ? (
+        {Array.isArray(movies) && movies.length > 0 && !submit ? (
           <div className="grid lg:grid-cols-6">
             {movies.map((movie: Movie) => (
               <Card className="p-4 m-2" key={movie.imdbID}>
@@ -171,8 +171,8 @@ const SearchForm = () => {
             ))}
           </div>
         ) : null}
-        {submit ? (
-          <div className="grid grid-cols-4 gap-5 m-10">
+        {Array.isArray(movies) && movies.length > 0 && submit ? (
+          <div className="grid lg:grid-cols-4">
             {movies.map((movie: Movie) => (
               <Card className="grid p-5 space-y-5" key={movie.imdbID}>
                 <CardTitle

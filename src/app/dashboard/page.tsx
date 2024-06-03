@@ -9,9 +9,9 @@ const page = async () => {
     redirect("/sign-in");
   }
   return (
-    <div>
+    <section className="container min-h-screen">
       <Dashboard />
-    </div>
+    </section>
   );
 };
 

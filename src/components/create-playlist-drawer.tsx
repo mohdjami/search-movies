@@ -97,9 +97,6 @@ const CreatePlaylistNewDrawer = () => {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Create Playlist</DialogTitle>
-          <DialogDescription className="py-2">
-            Create New Playlist
-          </DialogDescription>
         </DialogHeader>
         <hr />
         <CreateNewPlaylistForm />

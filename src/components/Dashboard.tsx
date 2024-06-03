@@ -56,12 +56,13 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {playlists.map((playlist: Playlist) => {
               return (
-                <Card key={playlist.id}>
+                <Card
+                  key={playlist.id}
+                  className="flex flex-col flex-grow gap-5"
+                >
                   <CardHeader>
                     <CardTitle>{playlist.name}</CardTitle>
-                    <CardDescription>
-                      A collection of my all-time favorite movies.
-                    </CardDescription>
+                    <CardDescription>{playlist.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2">
@@ -105,7 +106,7 @@ export default function Dashboard() {
               );
             })}
           </div>
-          <div className="mt-8">
+          <div className="m-8">
             <CreatePlaylistNewDrawer />
           </div>
         </div>

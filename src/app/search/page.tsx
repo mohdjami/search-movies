@@ -9,7 +9,11 @@ const HomePage = async () => {
   if (!user) {
     redirect("/sign-in");
   }
-  return <Home />;
+  return (
+    <section className="container min-h-screen">
+      <Home />
+    </section>
+  );
 };
 
 export default HomePage;

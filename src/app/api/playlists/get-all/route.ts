@@ -10,6 +10,7 @@ async function GetAllPlaylists() {
       id: true,
       name: true,
       ownerId: true,
+      description: true,
       createdAt: true,
       updatedAt: true,
       movies: true,

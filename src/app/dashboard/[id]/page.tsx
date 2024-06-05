@@ -54,8 +54,9 @@ const PlaylistPage = async ({ params }: Props) => {
   // This will not be logged on the server when using static rendering
   console.log(id);
   const user = await getCurrentUser();
-  if (user && playlist?.visibility) {
-    if (user.id !== playlist.ownerId) {
+
+  if (user || playlist?.visibility) {
+    if (user?.id !== playlist?.ownerId) {
       return redirect("/dashboard");
     }
   }

@@ -77,11 +77,10 @@ const SignInForm = () => {
         });
         isLoading(false);
       } else {
+        router.push("/search");
+        router.refresh();
         const response = await verifyEmail(values.email);
-
         if (response.status === 200) {
-          router.push("/search");
-          router.refresh();
           isLoading(false);
         } else {
           isLoading(false);
@@ -95,7 +94,6 @@ const SignInForm = () => {
       }
     } catch (error) {
       isLoading(false);
-
       handleError(error);
     }
   };

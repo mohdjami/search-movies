@@ -67,7 +67,7 @@ const SignInForm = () => {
         password: values.password,
         redirect: false,
       });
-      console.log(result);
+      // console.log(result);
       if (result?.error === "CredentialsSignin") {
         toast({
           title: "Either email or password is wrong",

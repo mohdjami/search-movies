@@ -28,6 +28,7 @@ export type Movie = {
   updatedAt: Date;
   playlistId: string | null;
 };
+export const dynamic = "force-dynamic";
 
 const PlaylistPage = async ({ params }: Props) => {
   //   const id = searchParams.get("id");

@@ -26,7 +26,5 @@ For signing in with credentials, you need to first verify your email. An email w
 - **Share Playlists:** Users can share their playlists publicly or privately.
 
 ## Here is the demo of the APP
-
-[![Demo Video]([public/image.png](https://vimeo.com/1021470691?share=copy))](public/demo-video.mp4 "Demo Video")
-
+https://vimeo.com/1021470691?share=copy
 Enjoy the application!

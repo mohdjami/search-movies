@@ -71,7 +71,7 @@ const CreatePlaylistForm: React.FC<CreatePlaylistProps> = ({ movie }) => {
     } else {
       isLoading(false);
       toast({
-        title: "Playlist Created",
+        title: "Something went wrong",
         variant: "destructive",
         description: name,
       });

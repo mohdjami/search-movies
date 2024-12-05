@@ -3,30 +3,13 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useForm } from "react-hook-form";
-import { CreatePlaylist } from "@/lib/api";
 import * as z from "zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "./ui/form";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { ArrowBigRight, Plus } from "lucide-react";
-import { Checkbox } from "./ui/checkbox";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Movie } from "@/types/config";
-import SelectPlaylist from "./select-playlist";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "@/components/ui/use-toast";

@@ -12,7 +12,6 @@ import {
 import * as z from "zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -30,7 +29,6 @@ const ForgotPassword = () => {
   const { toast } = useToast();
 
   const onSubmit = async (values: z.infer<typeof Schema>) => {
-    console.log("values of forgot password", values);
     // try {
     //   const response = await axios.post("/api/forgot-password", values, {
     //     headers: {

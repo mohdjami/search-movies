@@ -52,16 +52,12 @@ const ResetPassword = () => {
           token,
           email,
         });
-        console.log("response=", response, "response.data=", response.data);
-        console.log("valid=", response.data.isValid);
         setIsValid(response.data.isValid);
       }
     };
 
     verify();
   }, [token, email]);
-  console.log("token", token, "emai:", email);
-  console.log("valid=", isValid);
   if (isValid === null) {
     return <div>Verifying token...</div>;
   } else if (!isValid) {
@@ -71,10 +67,7 @@ const ResetPassword = () => {
       </div>
     );
   } else {
-    console.log("is valid later:", isValid);
     const onSubmit = async (data: z.infer<typeof Schema>) => {
-      console.log("data on submit reset button", data);
-      // console.log(token);
       try {
         const response = await axios.post("/api/reset-password", {
           ...data,
@@ -88,10 +81,8 @@ const ResetPassword = () => {
             "Password has been updated successfully, you can now login",
           variant: "default",
         });
-        console.log(response);
         // Handle success (e.g., show a success message and redirect to login page)
       } catch (error) {
-        console.log(error);
         // Handle error (e.g., show an error message)
       }
     };

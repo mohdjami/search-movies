@@ -43,7 +43,6 @@ const AddPlaylistDrawer: React.FC<AddPlaylistDrawerProps> = ({ movie }) => {
       privatePlaylist,
       movie
     );
-    console.log(name, description, privatePlaylist);
   };
 
   return (

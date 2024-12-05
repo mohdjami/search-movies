@@ -53,7 +53,6 @@ const CreateNewPlaylistForm = () => {
     try {
       isLoading(true);
       const { name, description, privatePlaylist } = data;
-      console.log(name, description, privatePlaylist);
 
       const response = await fetch("api/playlists/create-playlist", {
         method: "POST",
@@ -75,7 +74,6 @@ const CreateNewPlaylistForm = () => {
         window.location.reload();
         isLoading(false);
       } else {
-        console.log(res);
         toast({
           title: res.error,
           variant: "destructive",
@@ -86,7 +84,6 @@ const CreateNewPlaylistForm = () => {
     } catch (error) {
       isLoading(false);
 
-      console.log(error);
       toast({
         title: "Error",
         variant: "destructive",

@@ -41,7 +41,6 @@ export default function Dashboard() {
       });
       const data = await res.json();
       setPlaylists(data.playlists);
-      console.log(data.playlists);
       isLoading(false);
     };
     fetchPlaylists();
@@ -80,7 +79,6 @@ export default function Dashboard() {
                     <ul className="space-y-2">
                       {playlist.movies.length !== 0 ? (
                         playlist.movies.slice(0, 3).map((movie: Movie) => {
-                          console.log(movie);
                           return <li key={movie.imdbID}>{movie.title}</li>;
                         })
                       ) : (

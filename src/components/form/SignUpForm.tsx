@@ -57,15 +57,12 @@ const SignUpForm = () => {
     isLoading(true);
     try {
       const response = await axios.post("/api/createUser", values);
-      console.log("response= ", response, "status", response.status);
-
       if (response.status === 201) {
         try {
           const response = await axios.post(
             "/api/sendEmailVerification",
             values
           );
-          console.log("email verification response:", response);
           router.push("/sign-in");
           toast({
             title: "Verify Email to Sign-in",
@@ -76,12 +73,10 @@ const SignUpForm = () => {
           isLoading(false);
         } catch (error) {
           isLoading(false);
-          console.log("error in sending email verification", error);
         }
       }
     } catch (error) {
       isLoading(false);
-      console.log("error in creating user", error);
       toast({
         title: "Error",
         description: "Oops Something went wrong",

@@ -36,7 +36,6 @@ const CreatePlaylistNewDrawer = () => {
     try {
       isLoading(true);
       const { name, description, privatePlaylist } = data;
-      console.log(name, description, privatePlaylist);
 
       const response = await fetch("api/playlists/create-playlist", {
         method: "POST",

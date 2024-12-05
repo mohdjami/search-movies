@@ -1,10 +1,8 @@
-import Link from "next/link";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
-  CardContent,
   CardFooter,
 } from "@/components/ui/card";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -52,8 +50,6 @@ const PlaylistPage = async ({ params }: Props) => {
     },
   });
   const movies = playlist?.movies;
-  // This will not be logged on the server when using static rendering
-  console.log(id);
   const user = await getCurrentUser();
 
   if (user || playlist?.visibility) {

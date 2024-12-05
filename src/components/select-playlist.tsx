@@ -52,7 +52,6 @@ const SelectPlaylist: React.FC<SelectPlaylistProps> = ({ movie }) => {
       });
       const data = await res.json();
       setPlaylists(data.playlists);
-      // console.log(data.playlists);
     };
     fetchPlaylists();
   }, []);

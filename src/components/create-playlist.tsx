@@ -61,7 +61,6 @@ const CreatePlaylistForm: React.FC<CreatePlaylistProps> = ({ movie }) => {
       movie
     );
     const res = await response.json();
-    console.log(name, description, privatePlaylist);
     if (res.ok) {
       isLoading(false);
       toast({

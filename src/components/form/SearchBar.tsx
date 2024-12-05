@@ -56,7 +56,6 @@ const SearchForm = () => {
       const res = await axios.get(
         `https://www.omdbapi.com/?s=${search}&apikey=69f8465b&page=${currentPage}`
       );
-      console.log(res);
       setMovies(res.data.Search);
       setTotalMovies(res.data.totalResults);
     };
@@ -82,14 +81,10 @@ const SearchForm = () => {
     );
   }
   const onSubmit = async (values: z.infer<typeof Schema>) => {
-    console.log("values of search", values);
     //Add Pagination also
     setSubmit(true);
     // console.log(submit);
     try {
-      movies.map((movie: Movie) => {
-        console.log(movie.Title);
-      });
       toast({
         title: "Success",
         description: "Form Submitted",
